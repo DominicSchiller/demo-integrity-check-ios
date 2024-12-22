@@ -11,7 +11,9 @@ extension Encodable {
     }
     
     private func encode() throws -> Data {
-        try JSONEncoder().encode(self)
+        let jsonEncoder = JSONEncoder()
+        jsonEncoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        return try jsonEncoder.encode(self)
     }
     
 }
