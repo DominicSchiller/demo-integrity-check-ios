@@ -60,7 +60,7 @@ class URLSessionAPIClient: APIClient {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = request.method.rawValue
-        urlRequest.allHTTPHeaderFields = request.headers
+        urlRequest.allHTTPHeaderFields = request.headers.mapKeys { $0.rawValue } 
         
         do {
             urlRequest.httpBody = try request.body?.data
